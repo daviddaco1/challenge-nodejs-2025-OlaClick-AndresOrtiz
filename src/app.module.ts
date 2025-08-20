@@ -3,10 +3,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { ScheduleModule } from '@nestjs/schedule';
+import { HealthModule } from './health/health.module';
+import { OrdersModule } from './orders/orders.module';
+
 import * as fs from 'fs';
 import * as path from 'path';
-
-import { OrdersModule } from './orders/orders.module';
 
 function getEnvFile(): string {
   const envPath = path.resolve(process.cwd(), '.env');
@@ -56,6 +57,9 @@ function getEnvFile(): string {
         url: `redis://${config.get<string>('REDIS_HOST')}:${config.get<string>('REDIS_PORT')}`,
       }),
     }),
+
+    // Health
+    HealthModule,
 
     // Schedule
     ScheduleModule.forRoot(),
