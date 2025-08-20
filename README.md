@@ -90,5 +90,5 @@ npm run test:watch
 
 The API documentation is available at:
 
-- Swagger → [http://localhost:3000/api/docs](http://localhost:3000/docs)
+- Swagger → [http://localhost:3000/docs](http://localhost:3000/docs)
 - Postman / cURL
